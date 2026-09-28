@@ -1,0 +1,15 @@
+{
+  "name": "sf-joyeria",
+  "version": "1.0.0",
+  "description": "SF Joyería - Joyería Fina y Exclusiva",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": ["jewelry", "joyeria", "vercel"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
