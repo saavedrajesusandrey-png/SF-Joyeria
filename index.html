@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0f0f10">
+    
+    <title>SF Joyería | Joyería Fina y Exclusiva</title>
+    
+    <!-- Fuentes Tipográficas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navegación Superior -->
+    <header class="navbar" id="navbar">
+        <!-- Logo Real con la Imagen en la Esquina Superior -->
+        <div class="logo-container" onclick="toggleLogoTooltip()">
+            <div class="nav-logo-box">
+                <img src="logo.jpg" alt="Logo SF Joyería" class="nav-logo-img">
+            </div>
+            <span class="brand-name">SF <span>JOYERÍA</span></span>
+            
+            <!-- Badge Interactivo Flotante -->
+            <div class="logo-badge" id="logoBadge">
+                <i class="fas fa-certificate"></i>
+                <div class="badge-text">
+                    <strong>Garantía de Autenticidad</strong>
+                    <span>Piezas Finas & Exclusivas • Est. 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón Hamburguesa para Android / Móviles -->
+        <button class="menu-toggle btn-interactive" id="menuToggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li><a href="#inicio" class="nav-item">Inicio</a></li>
+                <li><a href="#nosotros" class="nav-item">Nosotros</a></li>
+                <li><a href="#coleccion" class="nav-item">Colección</a></li>
+                <li><a href="#contacto" class="nav-item">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Principal (Hero) -->
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <!-- Emblema Central Con Imagen Oficial -->
+            <div class="hero-emblem">
+                <img src="logo.jpg" alt="SF Joyería" class="hero-emblem-img">
+            </div>
+            <span class="sub-slogan">EST. 2026 • HECHO CON PASIÓN</span>
+            <h1>Joyería Fina & Exclusiva</h1>
+            <p>Manillas y pulseras elaboradas a mano con maestría para lucir una elegancia única.</p>
+            <div class="hero-buttons">
+                <a href="#coleccion" class="btn-primary btn-interactive">Ver Colección</a>
+                <a href="https://wa.me/573507098325?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20sus%20manillas." class="btn-whatsapp btn-interactive" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Asesoría WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="nosotros" class="nosotros reveal">
+        <div class="container">
+            <div class="nosotros-grid">
+                <div class="nosotros-text">
+                    <span class="tagline">NUESTRA ESENCIA</span>
+                    <h2>Elegancia atemporal hecha con pasión</h2>
+                    <p>En <strong>SF Joyería</strong> fusionamos la tradición artesanal con los diseños más vanguardistas. Cada tejido, balín y dije es elaborado minuciosamente para garantizar manillas de alta calidad que resalten tu estilo.</p>
+                    <p class="signature">Hecho con Pasión</p>
+                </div>
+                <div class="nosotros-img">
+                    <div class="nosotros-img-card">
+                        <img src="logo.jpg" alt="Certificado y Arte SF Joyería">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Colección Interactiva -->
+    <section id="coleccion" class="coleccion">
+        <div class="container">
+            <span class="tagline">CATÁLOGO EXCLUSIVO</span>
+            <h2>Nuestra Colección de Manillas</h2>
+            <div class="linea-decorativa"></div>
+
+            <!-- Filtros táctiles -->
+            <div class="filter-buttons">
+                <button class="filter-btn btn-interactive active" data-filter="all">Todas</button>
+                <button class="filter-btn btn-interactive" data-filter="tejidas">Tejidas & Balines</button>
+                <button class="filter-btn btn-interactive" data-filter="neopreno">Neopreno</button>
+                <button class="filter-btn btn-interactive" data-filter="religiosas">Religiosas</button>
+                <button class="filter-btn btn-interactive" data-filter="personalizadas">Personalizadas</button>
+            </div>
+
+            <!-- Galería de Productos -->
+            <div class="grid-productos">
+                
+                <!-- PRODUCTO 1: Manilla Bicolor con Balines Dorados -->
+                <div class="card-producto reveal" data-category="tejidas" onclick="openModal('Manilla Bicolor Macramé &amp; Balines', 'Manilla tejida a mano combinando hilo negro y beige con incrustaciones de balines dorados acanalados. Ajuste cómodo de nudo deslizante.', 'WhatsApp Image 2026-09-27 at 6.49.11 PM (3).jpeg')">
+                    <div class="img-box">
+                        <img src="WhatsApp Image 2026-09-27 at 6.49.11 PM (3).jpeg" alt="Manilla Bicolor Macramé">
+                        <div class="card-overlay"><i class="fas fa-search-plus"></i> Ver Detalle</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="categoria">Tejidas & Balines</span>
+                        <h3>Manilla Bicolor Macramé</h3>
+                        <p>Tejido en hilos negro y beige con balines dorados engastados de manera continua.</p>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 2: Manilla Neopreno & Balines -->
+                <div class="card-producto reveal" data-category="neopreno" onclick="openModal('Manilla Neopreno &amp; Balines', 'Diseño exclusivo en hilo beige entrelazado con detalles de neopreno negro y balines dorados brillantes. Un estilo moderno y ergonómico.', 'WhatsApp Image 2026-09-27 at 6.49.11 PM (2).jpeg')">
+                    <div class="img-box">
+                        <img src="WhatsApp Image 2026-09-27 at 6.49.11 PM (2).jpeg" alt="Manilla Neopreno y Balines">
+                        <div class="card-overlay"><i class="fas fa-search-plus"></i> Ver Detalle</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="categoria">Neopreno</span>
+                        <h3>Manilla Neopreno & Balines</h3>
+                        <p>Tejido beige con detalles intercalados de neopreno negro y balines dorados.</p>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 3: Manilla Virgen de Guadalupe -->
+                <div class="card-producto reveal" data-category="religiosas" onclick="openModal('Manilla Virgen de Guadalupe', 'Elegante manilla tejida en hilo negro con medalla central de la Virgen de Guadalupe, acompañada de cuentas blancas pulidas y balines dorados.', 'WhatsApp Image 2026-09-27 at 6.49.11 PM (1).jpeg')">
+                    <div class="img-box">
+                        <img src="WhatsApp Image 2026-09-27 at 6.49.11 PM (1).jpeg" alt="Manilla Virgen de Guadalupe">
+                        <div class="card-overlay"><i class="fas fa-search-plus"></i> Ver Detalle</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="categoria">Religiosas</span>
+                        <h3>Manilla Virgen de Guadalupe</h3>
+                        <p>Tejido en hilo negro con medalla religiosa dorada, neopreno blanco y balines de lujo.</p>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 4: Manilla Inicial "M" -->
+                <div class="card-producto reveal" data-category="personalizadas" onclick="openModal('Manilla Inicial &quot;M&quot; Beige', 'Hermosa manilla tejida a mano en hilo beige espiral con dije central en forma de placa rectangular dorada con la inicial &quot;M&quot;. Cierre ergonómico ajustable.', 'WhatsApp Image 2026-09-27 at 6.49.10 PM.jpeg')">
+                    <div class="img-box">
+                        <img src="WhatsApp Image 2026-09-27 at 6.49.10 PM.jpeg" alt="Manilla Tejida Inicial M">
+                        <div class="card-overlay"><i class="fas fa-search-plus"></i> Ver Detalle</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="categoria">Personalizadas</span>
+                        <h3>Manilla Inicial "M" Beige</h3>
+                        <p>Tejido fino en hilo beige con dije central de inicial dorada y nudo ajustable.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Detalle del Producto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <img id="modalImg" src="" alt="Producto">
+                <div class="modal-details">
+                    <h3 id="modalTitle">Título</h3>
+                    <p id="modalDesc">Descripción breve...</p>
+                    <a id="modalWaBtn" href="#" class="btn-whatsapp lg btn-interactive" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Preguntar por esta manilla
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto Directo -->
+    <section id="contacto" class="contacto">
+        <div class="container reveal">
+            <h2>¿Buscas un diseño a la medida?</h2>
+            <p>Atención personalizada para la creación de manillas y pulseras únicas. Habla con uno de nuestros asesores por WhatsApp.</p>
+            <a href="https://wa.me/573507098325?text=Hola!%20Quisiera%20asesoria%20para%20un%20dise%C3%B1o%20de%20manilla%20personalizado." class="btn-whatsapp lg btn-interactive" target="_blank">
+                <i class="fab fa-whatsapp"></i> Escríbenos para más información
+            </a>
+        </div>
+    </section>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/573507098325?text=Hola!%20Vengo%20desde%20su%20p%C3%A1gina%20web." class="whatsapp-float pulse btn-interactive" target="_blank" title="Chatea con nosotros">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-box">
+                <img src="logo.jpg" alt="SF Joyería Logo" class="footer-logo-img">
+            </div>
+            <p class="footer-title">SF JOYERÍA</p>
+            <p class="footer-sub">Manillas y Pulseras Finas • Est. 2026</p>
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/_sfjoyeria/" target="_blank" class="btn-interactive"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61594328937412" target="_blank" class="btn-interactive"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/573507098325" target="_blank" class="btn-interactive"><i class="fab fa-whatsapp"></i></a>
+            </div>
+
+            <!-- CONTADOR DE VISITAS REAL -->
+            <div class="visit-counter-box">
+                <div class="live-dot"></div>
+                <div class="counter-info">
+                    <span class="counter-number" id="visitCount">0</span>
+                    <span class="counter-label">Personas han visitado esta página</span>
+                </div>
+            </div>
+
+            <p class="copy">&copy; 2026 SF Joyería. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
