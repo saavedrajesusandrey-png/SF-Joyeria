@@ -20,11 +20,13 @@
     --fuente-titulo: 'Cinzel', serif;
     --fuente-cuerpo: 'Montserrat', sans-serif;
     --fuente-cursiva: 'Alex Brush', cursive;
+    --nav-bottom: 100px;
 }
 
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 84px;
 }
 
 body {
@@ -36,13 +38,17 @@ body {
     padding-bottom: env(safe-area-inset-bottom);
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 .container {
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 clamp(14px, 3vw, 24px);
 }
 
-/* CINTA SUPERIOR AUTOMÁTICA - PASA UNO POR UNO SIN FLECHAS */
+/* CINTA SUPERIOR AUTOMÁTICA */
 .top-promo-bar {
     background-color: #EFE6D8;
     color: var(--color-texto);
@@ -135,7 +141,7 @@ body {
     padding: 12px 5%;
     padding-left: calc(5% + env(safe-area-inset-left));
     padding-right: calc(5% + env(safe-area-inset-right));
-    background-color: rgba(255, 255, 255, 0.88);
+    background-color: rgba(255, 253, 249, 0.92);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     position: sticky;
@@ -154,7 +160,7 @@ body {
     position: relative;
     cursor: pointer;
     user-select: none;
-    padding: 4px 8px 4px 2px;
+    padding: 4px 10px 4px 4px;
     border-radius: 30px;
     transition: background-color 0.25s ease;
 }
@@ -165,8 +171,8 @@ body {
 
 .nav-logo-box {
     position: relative;
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 2px solid var(--acento-principal);
     overflow: hidden;
@@ -177,7 +183,7 @@ body {
 }
 
 .logo-container:hover .nav-logo-box {
-    transform: scale(1.08) rotate(-4deg);
+    transform: scale(1.06) rotate(-4deg);
     box-shadow: 0 0 0 4px rgba(154, 107, 38, 0.16), 0 8px 18px rgba(154, 107, 38, 0.25);
 }
 
@@ -218,9 +224,9 @@ body {
 
 .logo-badge {
     position: absolute;
-    top: 58px;
+    top: 56px;
     left: 0;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 253, 249, 0.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1.5px solid var(--acento-principal);
@@ -251,6 +257,7 @@ body {
 .badge-text strong {
     font-size: 0.8rem;
     color: var(--color-texto);
+    line-height: 1.2;
 }
 
 .badge-text span {
@@ -278,7 +285,14 @@ body {
     color: #FFFDF9;
 }
 
-.logo-container:hover .logo-badge,
+@media (hover: hover) {
+    .logo-container:hover .logo-badge {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
 .logo-badge.show {
     opacity: 1;
     visibility: visible;
@@ -287,10 +301,10 @@ body {
 
 .menu-toggle {
     display: none;
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--color-fondo-tarjeta);
     border: 1px solid var(--color-borde);
     color: var(--color-texto);
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     cursor: pointer;
     width: 44px;
     height: 44px;
@@ -300,7 +314,7 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 18px;
+    gap: 10px;
 }
 
 .nav-links a {
@@ -310,7 +324,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 1.3px;
     font-weight: 600;
-    padding: 8px 13px;
+    padding: 8px 14px;
     border-radius: 20px;
     transition: color 0.25s, background 0.25s;
 }
@@ -323,7 +337,7 @@ body {
 /* HERO PRINCIPAL SOBRE CREMA */
 .hero {
     min-height: calc(100dvh - 88px);
-    padding: clamp(44px, 7vh, 72px) 16px clamp(44px, 6vh, 64px);
+    padding: clamp(40px, 6vh, 68px) 16px clamp(44px, 6vh, 64px);
     background:
         radial-gradient(circle at 18% 20%, rgba(184, 130, 50, 0.11) 0%, transparent 45%),
         radial-gradient(circle at 85% 75%, rgba(154, 107, 38, 0.08) 0%, transparent 45%),
@@ -341,8 +355,8 @@ body {
 }
 
 .hero-emblem {
-    width: clamp(100px, 22vw, 122px);
-    height: clamp(100px, 22vw, 122px);
+    width: clamp(98px, 20vw, 120px);
+    height: clamp(98px, 20vw, 120px);
     margin: 0 auto 16px;
     border-radius: 50%;
     border: 2.5px solid var(--acento-principal);
@@ -515,7 +529,7 @@ body {
 
 .catalog-toolbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
     margin: 0 auto 16px;
@@ -530,7 +544,8 @@ body {
     background-color: var(--color-fondo-tarjeta);
     border: 1.5px solid var(--color-borde);
     border-radius: 25px;
-    padding: 10px 18px;
+    padding: 9px 14px 9px 18px;
+    min-height: 44px;
 }
 
 .search-box:focus-within {
@@ -538,7 +553,7 @@ body {
     box-shadow: 0 0 0 3px var(--acento-suave);
 }
 
-.search-box i {
+.search-box i.fa-search {
     color: var(--acento-principal);
 }
 
@@ -550,6 +565,35 @@ body {
     color: var(--color-texto);
     font-family: var(--fuente-cuerpo);
     font-size: 16px;
+}
+
+.clear-search-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-fondo-crema-suave);
+    color: var(--color-texto-secundario);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.clear-search-btn.visible {
+    display: inline-flex;
+}
+
+.clear-search-btn:hover {
+    background: var(--acento-principal);
+    color: #FFFDF9;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .btn-surprise,
@@ -710,7 +754,7 @@ body {
 }
 
 .card-info {
-    padding: 14px;
+    padding: 15px;
     text-align: left;
     flex: 1;
     position: relative;
@@ -730,19 +774,27 @@ body {
 
 .card-info h3 {
     font-family: var(--fuente-titulo);
-    font-size: 1rem;
-    margin: 4px 0 6px;
+    font-size: 0.98rem;
+    line-height: 1.3;
+    margin: 5px 0 7px;
     color: var(--color-texto);
 }
 
 .card-info p {
     font-size: 0.82rem;
+    line-height: 1.5;
     color: var(--color-texto-secundario);
-    margin-bottom: 10px;
-    flex: 1;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card-cta {
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid rgba(229, 218, 201, 0.6);
     font-size: 0.78rem;
     font-weight: 700;
     color: var(--acento-principal);
@@ -817,7 +869,7 @@ body {
     display: none;
     position: fixed;
     inset: 0;
-    background-color: rgba(31, 26, 20, 0.62);
+    background-color: rgba(31, 26, 20, 0.65);
     z-index: 2000;
     align-items: center;
     justify-content: center;
@@ -830,13 +882,13 @@ body {
 .modal-content {
     background-color: var(--color-fondo-tarjeta);
     border: 1.5px solid var(--color-borde);
-    box-shadow: 0 20px 45px rgba(31, 26, 20, 0.22);
+    box-shadow: 0 20px 45px rgba(31, 26, 20, 0.24);
     border-radius: 16px;
-    max-width: 740px;
+    max-width: 760px;
     width: 100%;
     position: relative;
     overflow: hidden;
-    max-height: 88dvh;
+    max-height: 90dvh;
     overflow-y: auto;
 }
 
@@ -848,15 +900,22 @@ body {
     height: 40px;
     border-radius: 50%;
     border: 1px solid var(--color-borde);
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 253, 249, 0.94);
     font-size: 1.5rem;
+    line-height: 1;
     color: var(--color-texto);
     cursor: pointer;
     z-index: 20;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(31, 26, 20, 0.1);
+    box-shadow: 0 4px 12px rgba(31, 26, 20, 0.12);
+}
+
+.close-modal:hover {
+    background: var(--acento-principal);
+    color: #FFFDF9;
+    border-color: var(--acento-principal);
 }
 
 .modal-body {
@@ -867,7 +926,7 @@ body {
 .modal-img-stage {
     position: relative;
     overflow: hidden;
-    min-height: 280px;
+    min-height: 300px;
     background: var(--color-fondo-crema-suave);
     user-select: none;
     touch-action: none;
@@ -906,7 +965,7 @@ body {
     position: absolute;
     bottom: 12px;
     left: 12px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 253, 249, 0.94);
     border: 1.5px solid var(--acento-principal);
     color: var(--acento-principal);
     padding: 8px 14px;
@@ -929,7 +988,7 @@ body {
 }
 
 .modal-details {
-    padding: 24px;
+    padding: 26px 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -952,6 +1011,7 @@ body {
 .modal-details h3 {
     font-family: var(--fuente-titulo);
     font-size: 1.28rem;
+    line-height: 1.3;
     color: var(--color-texto);
     margin-bottom: 10px;
 }
@@ -983,6 +1043,10 @@ body {
     font-weight: 700;
     cursor: pointer;
     min-height: 44px;
+}
+
+.btn-secondary-share:hover {
+    background: var(--acento-suave);
 }
 
 .share-feedback {
@@ -1018,8 +1082,8 @@ body {
 /* BOTÓN FLOTANTE */
 .whatsapp-float {
     position: fixed;
-    width: 58px;
-    height: 58px;
+    width: 56px;
+    height: 56px;
     bottom: calc(18px + env(safe-area-inset-bottom));
     right: calc(18px + env(safe-area-inset-right));
     background-color: var(--color-whatsapp);
@@ -1028,7 +1092,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 28px;
     box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
     z-index: 999;
     text-decoration: none;
@@ -1152,7 +1216,7 @@ footer {
 /* TOAST GLOBAL */
 .global-toast {
     position: fixed;
-    bottom: calc(90px + env(safe-area-inset-bottom));
+    bottom: calc(86px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%) translateY(20px);
     background: var(--color-texto);
@@ -1165,6 +1229,9 @@ footer {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.25s ease;
+    max-width: calc(100vw - 32px);
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -1205,12 +1272,12 @@ footer {
     }
 
     .modal-img-stage {
-        min-height: 240px;
-        max-height: 290px;
+        min-height: 250px;
+        max-height: 310px;
     }
 }
 
-/* CELULARES (iOS & ANDROID): MENÚ DE TRES LÍNEAS EN BLANCO / TRANSPARENTE */
+/* CELULARES (iOS & ANDROID) */
 @media (max-width: 768px) {
     .top-promo-bar {
         font-size: 0.72rem;
@@ -1224,18 +1291,19 @@ footer {
 
     .nav-menu {
         position: fixed;
-        top: 107px;
+        top: var(--nav-bottom);
         left: -100%;
         width: 100%;
-        height: calc(100dvh - 107px);
-        background-color: rgba(255, 255, 255, 0.88);
+        height: calc(100dvh - var(--nav-bottom));
+        background-color: rgba(255, 253, 249, 0.96);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: left 0.35s ease;
-        border-top: 1px solid rgba(31, 26, 20, 0.08);
+        transition: left 0.32s ease;
+        border-top: 1px solid var(--color-borde);
+        z-index: 998;
     }
 
     .nav-menu.active {
@@ -1245,12 +1313,22 @@ footer {
     .nav-links {
         flex-direction: column;
         align-items: center;
-        gap: 24px;
+        gap: 22px;
     }
 
     .nav-links a {
         font-size: 1.12rem;
         background: transparent;
+    }
+
+    .toolbar-actions {
+        width: 100%;
+    }
+
+    .btn-surprise,
+    .btn-share-catalog {
+        flex: 1;
+        justify-content: center;
     }
 
     .grid-productos {
@@ -1268,10 +1346,7 @@ footer {
 
     .card-info p {
         font-size: 0.76rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        -webkit-line-clamp: 2;
     }
 
     .loupe-lens {

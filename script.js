@@ -117,41 +117,71 @@ function openLogoPreview(e) {
     );
 }
 
-// 5. MENÚ MÓVIL
+document.addEventListener('click', (e) => {
+    const badge = document.getElementById('logoBadge');
+    const trigger = document.getElementById('brandLogoTrigger');
+    if (badge && trigger && !trigger.contains(e.target)) {
+        badge.classList.remove('show');
+    }
+});
+
+// 5. MENÚ MÓVIL Y POSICIÓN EXACTA DEL NAVBAR
+const navbar = document.getElementById('navbar');
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 const navItems = document.querySelectorAll('.nav-item');
 
+function syncNavPosition() {
+    if (!navbar) return;
+    const rect = navbar.getBoundingClientRect();
+    document.documentElement.style.setProperty('--nav-bottom', `${Math.max(56, Math.round(rect.bottom))}px`);
+}
+
+function closeMobileMenu() {
+    if (!navMenu || !menuToggle) return;
+    navMenu.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('no-scroll');
+    const icon = menuToggle.querySelector('i');
+    if (icon) {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+    }
+}
+
 if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+        syncNavPosition();
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        document.body.classList.toggle('no-scroll', isOpen);
         const icon = menuToggle.querySelector('i');
         if (icon) {
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-xmark');
+            icon.classList.toggle('fa-bars', !isOpen);
+            icon.classList.toggle('fa-xmark', isOpen);
         }
     });
 
     navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            const icon = menuToggle.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        });
+        item.addEventListener('click', closeMobileMenu);
     });
 }
 
-// 6. NAVBAR CON SCROLL
+// 6. NAVBAR CON SCROLL Y RESIZE
 window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
     if (!navbar) return;
     if (window.scrollY > 40) {
         navbar.style.padding = '9px 5%';
     } else {
         navbar.style.padding = '12px 5%';
+    }
+    syncNavPosition();
+}, { passive: true });
+
+window.addEventListener('resize', () => {
+    syncNavPosition();
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
     }
 }, { passive: true });
 
@@ -159,6 +189,7 @@ window.addEventListener('scroll', function() {
 const filterBtns = document.querySelectorAll('.filter-btn[data-filter]');
 const productCards = document.querySelectorAll('.card-producto');
 const searchInput = document.getElementById('catalogSearch');
+const clearSearchBtn = document.getElementById('clearSearchBtn');
 const resultsCount = document.getElementById('resultsCount');
 const emptyCatalog = document.getElementById('emptyCatalog');
 
@@ -171,9 +202,16 @@ function normalizeText(text) {
         .replace(/[\u0300-\u036f]/g, '');
 }
 
+function updateClearButton() {
+    if (!clearSearchBtn || !searchInput) return;
+    clearSearchBtn.classList.toggle('visible', searchInput.value.trim().length > 0);
+}
+
 function filterAndSearchCatalog() {
     const query = normalizeText(searchInput ? searchInput.value : '');
     let visibleCount = 0;
+
+    updateClearButton();
 
     productCards.forEach(card => {
         const cardCategory = normalizeText(card.getAttribute('data-category'));
@@ -213,6 +251,14 @@ filterBtns.forEach(btn => {
 
 if (searchInput) {
     searchInput.addEventListener('input', filterAndSearchCatalog);
+}
+
+if (clearSearchBtn && searchInput) {
+    clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        filterAndSearchCatalog();
+        searchInput.focus();
+    });
 }
 
 function resetCatalogFilters() {
@@ -312,9 +358,11 @@ if (modalStage) {
 
 function openModal(title, desc, imgSrc) {
     const modal = document.getElementById('productModal');
+    const modalContent = document.getElementById('modalContent');
     const feedback = document.getElementById('shareFeedback');
     if (!modal) return;
 
+    closeMobileMenu();
     currentProductTitle = title;
     if (feedback) feedback.textContent = '';
 
@@ -328,11 +376,14 @@ function openModal(title, desc, imgSrc) {
     document.getElementById('modalWaBtn').href = `https://wa.me/${WA_NUMBER}?text=${message}`;
 
     modal.style.display = 'flex';
+    document.body.classList.add('no-scroll');
+    if (modalContent) modalContent.scrollTop = 0;
 }
 
 function closeModal() {
     const modal = document.getElementById('productModal');
     if (modal) modal.style.display = 'none';
+    document.body.classList.remove('no-scroll');
     setLoupeState(false);
 }
 
@@ -375,6 +426,14 @@ async function shareStore() {
 window.addEventListener('click', function(e) {
     const modal = document.getElementById('productModal');
     if (e.target === modal) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+        closeMobileMenu();
+        document.getElementById('logoBadge')?.classList.remove('show');
+    }
 });
 
 // 10. ANIMACIÓN REVEAL
@@ -432,6 +491,7 @@ function revealOnScroll() {
 window.addEventListener('scroll', revealOnScroll, { passive: true });
 
 document.addEventListener('DOMContentLoaded', () => {
+    syncNavPosition();
     initVisitCounter();
     filterAndSearchCatalog();
     revealOnScroll();
