@@ -30,11 +30,11 @@
 </head>
 <body>
 
-    <!-- Cinta superior automática: pasa uno por uno -->
+    <!-- Cinta superior automática -->
     <div class="top-promo-bar" id="promoTicker">
         <div class="ticker-viewport">
             <div class="ticker-slide active" data-action="scroll-coleccion">
-                <i class="fas fa-sparkles"></i>
+                <i class="fas fa-gem"></i>
                 <span>Oro Laminado 18k &amp; Tejido Artesanal</span>
             </div>
             <div class="ticker-slide" data-action="scroll-contacto">
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <button type="button" class="menu-toggle btn-interactive" id="menuToggle" aria-label="Abrir menú">
+        <button type="button" class="menu-toggle btn-interactive" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </button>
 
@@ -83,7 +83,7 @@
         </nav>
     </header>
 
-    <!-- Hero Principal sobre crema cálido -->
+    <!-- Hero Principal -->
     <section id="inicio" class="hero">
         <div class="hero-content">
             <div class="hero-emblem" onclick="openLogoPreview(event)" title="Ver emblema">
@@ -95,7 +95,7 @@
 
             <div class="hero-buttons">
                 <a href="#coleccion" class="btn-primary btn-interactive">
-                    <i class="fas fa-gem"></i> Ver Colección (30)
+                    <i class="fas fa-gem"></i> Ver Colección (31)
                 </a>
                 <a href="https://wa.me/573507098325?text=Hola!%20Vengo%20de%20la%20p%C3%A1gina%20de%20SF%20Joyer%C3%ADa%20y%20quiero%20informaci%C3%B3n." class="btn-whatsapp btn-interactive" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
@@ -105,7 +105,7 @@
             <div class="trust-strip">
                 <div class="trust-item"><i class="fas fa-hand-sparkles"></i> <strong>Acabado Artesanal</strong></div>
                 <div class="trust-item"><i class="fas fa-crown"></i> <strong>Oro Laminado 18k</strong></div>
-                <div class="trust-item"><i class="fas fa-mobile-screen"></i> <strong>Vista Detallada</strong></div>
+                <div class="trust-item"><i class="fas fa-magnifying-glass"></i> <strong>Vista Detallada</strong></div>
             </div>
         </div>
     </section>
@@ -118,7 +118,7 @@
                     <span class="tagline">GALERÍA DE JOYERÍA</span>
                     <h2>Nuestra Colección</h2>
                 </div>
-                <span class="results-count" id="resultsCount">Mostrando 30 piezas</span>
+                <span class="results-count" id="resultsCount">Mostrando 31 piezas</span>
             </div>
 
             <!-- Buscador + Elegir al azar + Compartir -->
@@ -126,20 +126,25 @@
                 <div class="search-box">
                     <i class="fas fa-search"></i>
                     <input type="text" id="catalogSearch" placeholder="Buscar manilla, color, inicial o cadena..." aria-label="Buscar en el catálogo">
+                    <button type="button" class="clear-search-btn" id="clearSearchBtn" aria-label="Limpiar búsqueda" title="Limpiar">
+                        <i class="fas fa-xmark"></i>
+                    </button>
                 </div>
 
-                <button type="button" class="btn-surprise btn-interactive" onclick="pickRandomPiece()">
-                    <i class="fas fa-wand-magic-sparkles"></i> Elegir al azar
-                </button>
+                <div class="toolbar-actions">
+                    <button type="button" class="btn-surprise btn-interactive" onclick="pickRandomPiece()">
+                        <i class="fas fa-wand-magic-sparkles"></i> Elegir al azar
+                    </button>
 
-                <button type="button" class="btn-share-catalog btn-interactive" onclick="shareStore()">
-                    <i class="fas fa-share-nodes"></i> Compartir
-                </button>
+                    <button type="button" class="btn-share-catalog btn-interactive" onclick="shareStore()">
+                        <i class="fas fa-share-nodes"></i> Compartir
+                    </button>
+                </div>
             </div>
 
             <!-- Filtros -->
             <div class="filter-buttons">
-                <button type="button" class="filter-btn btn-interactive active" data-filter="all">Todas (30)</button>
+                <button type="button" class="filter-btn btn-interactive active" data-filter="all">Todas (31)</button>
                 <button type="button" class="filter-btn btn-interactive" data-filter="tejidas">Tejidas &amp; Balines</button>
                 <button type="button" class="filter-btn btn-interactive" data-filter="neopreno">Neopreno</button>
                 <button type="button" class="filter-btn btn-interactive" data-filter="religiosas">Religiosas</button>
@@ -147,7 +152,7 @@
                 <button type="button" class="filter-btn btn-interactive" data-filter="cadenas">Cadenas</button>
             </div>
 
-            <!-- Galería de Productos (30 piezas intactas) -->
+            <!-- Galería de Productos -->
             <div class="grid-productos" id="productGrid">
 
                 <!-- PRODUCTO 1 -->
@@ -541,10 +546,10 @@
                 </div>
 
                 <!-- PRODUCTO 27 -->
-                <div class="card-producto shine-card reveal" data-category="tejidas" onclick="openModal('Pulsera Tejida rosa pastel con Balines Dorados Facetados', 'Sofisticada pulsera tejida a mano en macramé color beige claro. Incorpora balines dorados pulidos y labrados engastados con elegancia.', 'WhatsApp Image 2026-11-02 at 6.24.48 PM (1).jpeg')">
+                <div class="card-producto shine-card reveal" data-category="tejidas" onclick="openModal('Pulsera Tejida Rosa Pastel con Balines Dorados Facetados', 'Sofisticada pulsera tejida a mano en macramé color beige claro. Incorpora balines dorados pulidos y labrados engastados con elegancia.', 'WhatsApp Image 2026-11-02 at 6.24.48 PM (1).jpeg')">
                     <div class="img-box">
                         <span class="product-tag">Facetados</span>
-                        <img src="WhatsApp Image 2026-11-02 at 6.24.48 PM (1).jpeg" alt="Pulsera Tejida rosa pastel con Balines Dorados Facetados" loading="lazy">
+                        <img src="WhatsApp Image 2026-11-02 at 6.24.48 PM (1).jpeg" alt="Pulsera Tejida Rosa Pastel con Balines Dorados Facetados" loading="lazy">
                         <div class="card-overlay"><i class="fas fa-magnifying-glass"></i> Ver con lupa</div>
                     </div>
                     <div class="card-info">
@@ -600,6 +605,21 @@
                     </div>
                 </div>
 
+                <!-- PRODUCTO 31 -->
+                <div class="card-producto shine-card reveal" data-category="personalizadas" onclick="openModal('Manilla Negra con Inicial E', 'Manilla tejida en hilo negro con esferas mate oscuras, balines dorados facetados intercalados y una placa central rectangular dorada texturizada con la letra E.', 'manilla letra e.jpg')">
+                    <div class="img-box">
+                        <span class="product-tag">Inicial E</span>
+                        <img src="manilla letra e.jpg" alt="Manilla Negra con Inicial E" loading="lazy">
+                        <div class="card-overlay"><i class="fas fa-magnifying-glass"></i> Ver con lupa</div>
+                    </div>
+                    <div class="card-info">
+                        <span class="categoria">Personalizadas</span>
+                        <h3>Manilla Negra con Inicial E</h3>
+                        <p>Esferas mate negras, balines dorados facetados y placa central texturizada con la inicial E.</p>
+                        <span class="card-cta">Inspeccionar pieza <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
             </div>
 
             <div class="empty-catalog" id="emptyCatalog" style="display: none;">
@@ -630,7 +650,7 @@
 
     <!-- Modal Detalle con Lupa Circular Interactiva -->
     <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-content">
+        <div class="modal-content" id="modalContent">
             <button type="button" class="close-modal" onclick="closeModal()" aria-label="Cerrar detalle">&times;</button>
             <div class="modal-body">
                 <div class="modal-img-stage" id="modalImgStage">
